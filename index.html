@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎂 Joyeux Anniversaire ! 🎂</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+<h1 class="title">💩 Choisis une carte petite merde 💩</h1>
+
+<div class="cards-grid" id="cardsGrid">
+            <!-- Les cartes seront générées par JavaScript -->
+        </div>
+    </div>
+
+    <!-- Overlay sombre pour les cartes agrandies -->
+    <div class="card-overlay" id="cardOverlay"></div>
+
+    <!-- Modal pour le message d'anniversaire -->
+    <div class="modal" id="birthdayModal">
+      <div class="modal-content">
+        <h2 class="birthday-title">🎉 Joyeux Anniversaire ! 🎉</h2>
+        <p class="birthday-message">Voici ton cadeau !</p>
+        <div class="gift-photo">
+          <img src="images/cadeau.jpg" alt="Ton cadeau" id="giftImage" />
+        </div>
+        <button class="close-btn" onclick="closeModal()">Fermer</button>
+      </div>
+    </div>
+
+    <!-- Canvas pour les feux d'artifice -->
+    <canvas id="fireworks"></canvas>
+
+    <script src="script.js"></script>
+  </body>
+</html>
