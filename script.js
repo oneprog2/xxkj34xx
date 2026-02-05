@@ -144,8 +144,11 @@ function createCard(index) {
     `https://picsum.images/200/300?random=${index}`;
   img.alt = "image";
   img.onerror = function () {
-    // Si l'image ne charge pas, utiliser un placeholder
-    this.src = `https://picsum.images/200/300?random=${index}`;
+    // Si l'image ne charge pas, utiliser une image random parmi les 40 premières
+    const randomIndex = Math.floor(Math.random() * 40) + 1;
+    this.src = `images/image${randomIndex}.JPEG`;
+    // Éviter boucle infinie si même l'image random n'existe pas
+    this.onerror = null;
   };
 
   cardFront.appendChild(img);
@@ -170,6 +173,10 @@ function flipCard(card, index) {
   )
     return;
 
+  // Debug: afficher le nom de l'image
+  const imgSrc = CONFIG.friendimages[index] || "PAS D'IMAGE DÉFINIE";
+  console.log(`Carte ${index} - Image: ${imgSrc}`);
+
   const overlay = document.getElementById("cardOverlay");
 
   // Récupérer la position actuelle de la carte
@@ -181,9 +188,9 @@ function flipCard(card, index) {
 
   // Calculer la position centrale de l'écran
   const endWidth =
-    window.innerWidth < 480 ? 260 : window.innerWidth < 768 ? 320 : 400;
+    window.innerWidth < 480 ? 340 : window.innerWidth < 768 ? 416 : 520;
   const endHeight =
-    window.innerWidth < 480 ? 350 : window.innerWidth < 768 ? 430 : 540;
+    window.innerWidth < 480 ? 455 : window.innerWidth < 768 ? 560 : 700;
   const endX = (window.innerWidth - endWidth) / 2;
   const endY = (window.innerHeight - endHeight) / 2;
 
