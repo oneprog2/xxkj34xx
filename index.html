@@ -8,23 +8,33 @@
   </head>
   <body>
     <div class="container">
-<h1 class="title">💩 Choisis une carte petite merde 💩</h1>
+      <h1 class="title">💩 Choisis une carte petite merde 💩</h1>
 
-<div class="cards-grid" id="cardsGrid">
-            <!-- Les cartes seront générées par JavaScript -->
-        </div>
+      <div class="cards-grid" id="cardsGrid">
+        <!-- Les cartes seront générées par JavaScript -->
+      </div>
     </div>
 
     <!-- Overlay sombre pour les cartes agrandies -->
     <div class="card-overlay" id="cardOverlay"></div>
 
+    <!-- Animation DUEL avant anniversaire -->
+    <div class="duel-overlay" id="duelOverlay">
+      <div class="duel-container">
+        <div class="duel-text-1">C'est l'heure du...</div>
+        <div class="duel-text-2" id="duelText">DUDUDUDUDUDUEL!!!</div>
+      </div>
+    </div>
+
     <!-- Modal pour le message d'anniversaire -->
     <div class="modal" id="birthdayModal">
       <div class="modal-content">
-        <h2 class="birthday-title">🎉 Joyeux Anniversaire ! 🎉</h2>
-        <p class="birthday-message">Voici ton cadeau !</p>
+        <h2 class="birthday-title">🎉 Joyeux anniversaire KJ 🎉</h2>
+        <p class="birthday-message">
+          Swords of revealing light GEM MINT PSA10 2002
+        </p>
         <div class="gift-photo">
-          <img src="images/cadeau.jpg" alt="Ton cadeau" id="giftImage" />
+          <img src="images/cadeau.png" alt="Ton cadeau" id="giftImage" />
         </div>
         <button class="close-btn" onclick="closeModal()">Fermer</button>
       </div>

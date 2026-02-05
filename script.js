@@ -2,69 +2,69 @@
 const CONFIG = {
   numberOfCards: 62, // Nombre de cartes
   winningCardIndex: null, // Sera défini aléatoirement
-  friendPhotos: [
-    "images/photo1.jpg",
-    "images/photo2.jpg",
-    "images/photo3.jpg",
-    "images/photo4.jpg",
-    "images/photo5.jpg",
-    "images/photo6.jpg",
-    "images/photo7.jpg",
-    "images/photo8.jpg",
-    "images/photo9.jpg",
-    "images/photo10.jpg",
-    "images/photo11.jpg",
-    "images/photo12.jpg",
-    "images/photo13.jpg",
-    "images/photo14.jpg",
-    "images/photo15.jpg",
-    "images/photo16.jpg",
-    "images/photo17.jpg",
-    "images/photo18.jpg",
-    "images/photo19.jpg",
-    "images/photo20.jpg",
-    "images/photo21.jpg",
-    "images/photo22.jpg",
-    "images/photo23.jpg",
-    "images/photo24.jpg",
-    "images/photo25.jpg",
-    "images/photo26.jpg",
-    "images/photo27.jpg",
-    "images/photo28.jpg",
-    "images/photo29.jpg",
-    "images/photo30.jpg",
-    "images/photo31.jpg",
-    "images/photo32.jpg",
-    "images/photo33.jpg",
-    "images/photo34.jpg",
-    "images/photo35.jpg",
-    "images/photo36.jpg",
-    "images/photo37.jpg",
-    "images/photo38.jpg",
-    "images/photo39.jpg",
-    "images/photo40.jpg",
-    "images/photo41.jpg",
-    "images/photo42.jpg",
-    "images/photo43.jpg",
-    "images/photo44.jpg",
-    "images/photo45.jpg",
-    "images/photo46.jpg",
-    "images/photo47.jpg",
-    "images/photo48.jpg",
-    "images/photo49.jpg",
-    "images/photo50.jpg",
-    "images/photo51.jpg",
-    "images/photo52.jpg",
-    "images/photo53.jpg",
-    "images/photo54.jpg",
-    "images/photo55.jpg",
-    "images/photo56.jpg",
-    "images/photo57.jpg",
-    "images/photo58.jpg",
-    "images/photo59.jpg",
-    "images/photo60.jpg",
-    "images/photo61.jpg",
-    "images/photo62.jpg",
+  friendimages: [
+    "images/image1.JPEG",
+    "images/image2.JPEG",
+    "images/image3.JPEG",
+    "images/image4.JPEG",
+    "images/image5.JPEG",
+    "images/image6.JPEG",
+    "images/image7.JPEG",
+    "images/image8.JPEG",
+    "images/image9.JPEG",
+    "images/image10.JPEG",
+    "images/image11.JPEG",
+    "images/image12.JPEG",
+    "images/image13.JPEG",
+    "images/image14.JPEG",
+    "images/image15.JPEG",
+    "images/image16.JPEG",
+    "images/image17.JPEG",
+    "images/image18.JPEG",
+    "images/image19.JPEG",
+    "images/image20.JPEG",
+    "images/image21.JPEG",
+    "images/image22.JPEG",
+    "images/image23.JPEG",
+    "images/image24.JPEG",
+    "images/image25.JPEG",
+    "images/image26.JPEG",
+    "images/image27.JPEG",
+    "images/image28.JPEG",
+    "images/image29.JPEG",
+    "images/image30.JPEG",
+    "images/image31.JPEG",
+    "images/image32.JPEG",
+    "images/image33.JPEG",
+    "images/image34.JPEG",
+    "images/image35.JPEG",
+    "images/image36.JPEG",
+    "images/image37.JPEG",
+    "images/image38.JPEG",
+    "images/image39.JPEG",
+    "images/image40.JPEG",
+    "images/image41.JPEG",
+    "images/image42.JPEG",
+    "images/image43.JPEG",
+    "images/image44.JPEG",
+    "images/image45.JPEG",
+    "images/image46.JPEG",
+    "images/image47.JPEG",
+    "images/image48.JPEG",
+    "images/image49.JPEG",
+    "images/image50.JPEG",
+    "images/image51.JPEG",
+    "images/image52.JPEG",
+    "images/image53.JPEG",
+    "images/image54.JPEG",
+    "images/image55.JPEG",
+    "images/image56.JPEG",
+    "images/image57.JPEG",
+    "images/image58.JPEG",
+    "images/image59.JPEG",
+    "images/image60.JPEG",
+    "images/image61.JPEG",
+    "images/image62.JPEG",
   ],
 };
 
@@ -134,18 +134,18 @@ function createCard(index) {
   const cardBack = document.createElement("div");
   cardBack.className = "card-face card-back";
 
-  // Face avant (photo)
+  // Face avant (image)
   const cardFront = document.createElement("div");
   cardFront.className = "card-face card-front";
 
   const img = document.createElement("img");
   img.src =
-    CONFIG.friendPhotos[index] ||
-    `https://picsum.photos/200/300?random=${index}`;
-  img.alt = "Photo";
+    CONFIG.friendimages[index] ||
+    `https://picsum.images/200/300?random=${index}`;
+  img.alt = "image";
   img.onerror = function () {
     // Si l'image ne charge pas, utiliser un placeholder
-    this.src = `https://picsum.photos/200/300?random=${index}`;
+    this.src = `https://picsum.images/200/300?random=${index}`;
   };
 
   cardFront.appendChild(img);
@@ -153,6 +153,11 @@ function createCard(index) {
   card.appendChild(cardFront);
 
   card.addEventListener("click", () => flipCard(card, index));
+
+  // Marquer la carte gagnante en bleu (temporaire)
+  if (index === CONFIG.winningCardIndex) {
+    card.classList.add("winning-card");
+  }
 
   return card;
 }
@@ -176,9 +181,9 @@ function flipCard(card, index) {
 
   // Calculer la position centrale de l'écran
   const endWidth =
-    window.innerWidth < 480 ? 200 : window.innerWidth < 768 ? 250 : 280;
+    window.innerWidth < 480 ? 260 : window.innerWidth < 768 ? 320 : 400;
   const endHeight =
-    window.innerWidth < 480 ? 270 : window.innerWidth < 768 ? 340 : 380;
+    window.innerWidth < 480 ? 350 : window.innerWidth < 768 ? 430 : 540;
   const endX = (window.innerWidth - endWidth) / 2;
   const endY = (window.innerHeight - endHeight) / 2;
 
@@ -260,10 +265,41 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Afficher le modal d'anniversaire
+// Afficher l'animation DUEL puis le modal d'anniversaire
 function showBirthdayModal() {
+  const duelOverlay = document.getElementById("duelOverlay");
   const modal = document.getElementById("birthdayModal");
-  modal.classList.add("show");
+  const cardOverlay = document.getElementById("cardOverlay");
+
+  // Cacher la carte agrandie
+  const animatingCard = document.querySelector(".card.animating");
+  if (animatingCard) {
+    animatingCard.style.transition = "none";
+    animatingCard.classList.remove("animating");
+    animatingCard.style.position = "";
+    animatingCard.style.left = "";
+    animatingCard.style.top = "";
+    animatingCard.style.width = "";
+    animatingCard.style.height = "";
+    setTimeout(() => {
+      animatingCard.style.transition = "";
+    }, 50);
+  }
+  cardOverlay.classList.remove("show");
+
+  // D'abord afficher l'animation DUEL
+  duelOverlay.classList.add("show");
+
+  // Flash après l'animation du texte
+  setTimeout(() => {
+    duelOverlay.classList.add("flash");
+  }, 2800);
+
+  // Puis afficher le modal d'anniversaire
+  setTimeout(() => {
+    duelOverlay.classList.remove("show", "flash");
+    modal.classList.add("show");
+  }, 3500);
 }
 
 // Fermer le modal
