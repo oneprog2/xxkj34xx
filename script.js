@@ -157,11 +157,6 @@ function createCard(index) {
 
   card.addEventListener("click", () => flipCard(card, index));
 
-  // Marquer la carte gagnante en bleu (temporaire)
-  if (index === CONFIG.winningCardIndex) {
-    card.classList.add("winning-card");
-  }
-
   return card;
 }
 
